@@ -10,7 +10,7 @@
 
 </head>
 
-<body>
+<body class="bg-light d-flex flex-column min-vh-100">
     <!-- Cabeçalho -->
     <header class="bg-dark text-white py-3">
         <div class="container">
@@ -29,8 +29,13 @@
 
     </header>
 
-    <main>
-        
+    <!-- Conteúdo carregado pelas rotas -->
+    <main class="flex-grow-1">
+        <?php
+        // Carrega o arquivo que controla as páginas do sistema
+        require __DIR__ . "/routes.php";
+        ?>
+
     </main>
 
     <!-- Rodapé -->
