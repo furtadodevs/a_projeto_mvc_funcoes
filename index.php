@@ -29,13 +29,14 @@
 
     </header>
 
+    <main>
+        
+    </main>
 
-
-
-
-
-
-
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0"> Sistema MVC de Cadastro </p>
+    </footer>
 
 
     <!-- JavaScript do Bootstrap -->
