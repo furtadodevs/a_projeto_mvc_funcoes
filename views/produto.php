@@ -39,7 +39,7 @@
 
 
             <!-- Mensagem de retorno -->
-             <div id="mensagem" class="alert d-none mt-3"></div>
+            <div id="mensagem" class="alert d-none mt-3"></div>
 
 
         </form>
@@ -47,6 +47,6 @@
 
     </div>
 
-
+    <script src="assets/js/produto.js"></script>
 
 </section>
