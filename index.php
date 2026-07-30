@@ -21,7 +21,9 @@
                 <nav class="nav">
                     <a href="index.php?page=produtos" class="nav-link text-white"> Produtos </a>
 
-                    <!-- TODO: Criar para clientes e funcionarios -->
+                    <a href="index.php?page=clientes" class="nav-link text-white"> Clientes </a>
+
+                    <a href="index.php?page=funcionarios" class="nav-link text-white"> Funcionarios </a>
 
                 </nav>
             </div>
