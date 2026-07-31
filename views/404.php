@@ -1,3 +1,6 @@
+<!-- CSS da página -->
+<link rel="stylesheet" href="assets/css/404.css">
+
 <section>
     <div class="alert alert-danger">
         <h2>Erro 404</h2>

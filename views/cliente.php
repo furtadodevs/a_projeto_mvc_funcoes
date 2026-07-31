@@ -1,3 +1,6 @@
+<!-- CSS da página -->
+<link rel="stylesheet" href="assets/css/cliente.css">
+
 <section>
 
     <div class="col-md-6 mx-auto">

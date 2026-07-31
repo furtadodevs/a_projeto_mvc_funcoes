@@ -21,7 +21,7 @@ form.addEventListener("submit", async function (evento) {
 
     try {
         // Envia os dados para o Controller
-        const resposta = await fetch("controllers/ProdutoController.php", {
+        const resposta = await fetch("controllers/ClienteController.php", {
             method: "POST",
             body: dados
         });
