@@ -1,55 +1,87 @@
-<!-- CSS da página -->
-<link rel="stylesheet" href="assets/css/produto.css">
+     <!-- css da página -->
+     <link rel="stylesheet" href="assets/css/produto.css">
 
-<section>
+     <section>
+         <div class="col-md-6 mx-auto mt-5">
+             <h2> Cadastro de produtos </h2>
 
-    <div class="col-md-6 mx-auto">
+             <!-- Formulário -->
+             <form id="formProduto">
 
-        <h2> Cadastro de produtos </h2>
+                 <!-- Nome -->
+                 <div class="mb-3">
+                     
+                    <label for="nome"> Nome </label>
+                    
+                    <div class="input-group">
+                         <span class="input-group-text"> <i class="bi bi-box"></i> </span>
+                         <input type="text" id="nome" name="nome" class="form-control">
+                         <div class="invalid-feedback"></div>
+                         <div class="valid-feedback"></div>
+                     </div>
+                 </div>
 
-        <!-- Formulário -->
-        <form id="formProduto">
+                 <!-- Categoria -->
+                 <div class="mb-3">
 
-            <!-- Nome -->
-            <div class="mb-3">
-                <label for="nome"> Nome </label>
-                <input type="text" id="nome" name="nome" class="form-control">
-            </div>
+                     <label for="categoria" class="form-label"> Categoria </label>
 
-            <!-- Categoria -->
-            <div class="mb-3">
-                <label for="categoria"> Categoria </label>
-                <input type="text" id="categoria" name="categoria" class="form-control">
-            </div>
+                     <div class="input-group">
+                         <span class="input-group-text"> <i class="bi bi-tags"></i> </span>
+                         <input type="text" id="categoria" name="categoria" class="form-control">
+                         <div class="invalid-feedback"></div>
+                         <div class="valid-feedback"></div>
+                     </div>
+                 </div>
 
-            <!-- Preço -->
-            <div class="mb-3">
-                <label for="preco"> Preço </label>
-                <input type="number" id="preco" name="preco" class="form-control">
-            </div>
+                 <!-- Preço -->
+                 <div class="mb-3">
+                     <label for="preco"> Preço </label>
 
-            <!-- Quantidade -->
-            <div class="mb-3">
-                <label for="quantidade"> Quantidade </label>
-                <input type="number" id="quantidade" name="quantidade" class="form-control">
-            </div>
+                     <div class="input-group">
+                         <span class="input-group-text">R$</span>
+                         <input type="text" id="preco" name="preco" class="form-control">
+                         <!-- TODO: type text -->
+                     </div>
+
+                     <div class="invalid-feedback"></div>
+                     <div class="valid-feedback"></div>
+
+                 </div>
+
+                 <!-- Quantidade -->
+                 <div class="mb-3">
+                     <label for="number"> Quantidade </label>
+
+                     <div class="input-group">
+                         <span class="input-group-text"> <i class="bi bi-123"></i> </span>
+                         <input type="text" id="quantidade" name="quantidade" class="form-control">
+                         <div class="invalid-feedback"></div>
+                         <div class="valid-feedback"></div>
+                     </div>
+                 </div>
+
+                 <button type="submit" class="btn btn-primary w-100">
+                     Cadastrar
+                 </button>
+             </form>
+
+             <!-- Mensagem de Retorno -->
+             <div id="mensagem" class="alert d-none mt-3"> </div>
 
 
-            <!-- Botão cadastrar -->
-            <button type="submit" class="btn btn-primary w-100">
-                Cadastrar
-            </button>
+         </div>
 
+     </section>
 
-            <!-- Mensagem de retorno -->
-            <div id="mensagem" class="alert d-none mt-3"></div>
+     <!-- jQuery -->
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+     <!-- jQuery Validation -->
+     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 
-        </form>
+     <!-- jQuery Mask -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-
-    </div>
-
-    <script src="assets/js/produto.js"></script>
-
-</section>
+     <!-- script da página -->
+     <script src="assets/js/produto.js"></script>
