@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,50 +6,80 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sistema MVC</title>
+    <title>Sistema de Cadastros</title>
+
 
     <!-- Bootstrap -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    >
+
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- Fonte Poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS da página -->
+    <link rel="stylesheet" href="assets/css/landing.css">
 
 </head>
 
-<body class="bg-light">
+
+<body>
 
 
-    <!-- =========================================
-         CABEÇALHO DA LANDING PAGE
-    ========================================== -->
+<!-- =========================================
+     CABEÇALHO
+     ========================================= -->
 
-    <header>
+<header class="landing-header">
 
-        <nav class="navbar navbar-dark bg-dark py-3">
+    <nav class="navbar">
 
-            <div class="container">
+        <div class="container">
 
-                <!-- Logo / Nome -->
-                <a href="index.php?page=landing"
-                    class="navbar-brand fw-bold">
+            <div class="landing-nav">
 
-                    <i class="bi bi-grid me-2"></i>
 
-                    Sistema MVC
+                <!-- Logo -->
+
+                <a
+                    href="index.php?page=landing"
+                    class="landing-logo"
+                >
+
+                    <span class="logo-icon">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                    </span>
+
+                    <span>
+                        Sistema de Cadastros
+                    </span>
 
                 </a>
 
 
-                <!-- Login -->
-                <a href="index.php?page=login"
-                    class="btn btn-outline-light">
+                <!-- Botão Login -->
 
-                    <i class="bi bi-box-arrow-in-right me-1"></i>
+                <a
+                    href="index.php?page=login"
+                    class="btn-login"
+                >
+
+                    <i class="bi bi-box-arrow-in-right"></i>
 
                     Entrar
 
@@ -56,67 +87,214 @@
 
             </div>
 
-        </nav>
+        </div>
 
-    </header>
+    </nav>
 
-
-    <!-- =========================================
-         CONTEÚDO PRINCIPAL
-    ========================================== -->
-
-    <main>
+</header>
 
 
-        <!-- APRESENTAÇÃO -->
 
-        <section class="py-5">
+<!-- =========================================
+     CONTEÚDO PRINCIPAL
+     ========================================= -->
 
-            <div class="container">
-
-                <div class="row align-items-center py-5">
+<main>
 
 
-                    <!-- Texto -->
+    <!-- =====================================
+         HERO
+         ===================================== -->
 
-                    <div class="col-lg-6">
+    <section class="hero">
 
-                        <span class="badge bg-primary mb-3">
-                            Sistema de Gestão
-                        </span>
+        <div class="container">
 
-                        <h1 class="display-4 fw-bold">
+            <div class="row align-items-center">
 
-                            Gerencie seus cadastros
-                            de forma simples
 
-                        </h1>
+                <!-- Texto -->
 
-                        <p class="lead text-muted mt-3">
+                <div class="col-lg-6">
 
-                            Um sistema para gerenciamento de
-                            produtos, clientes e funcionários.
+                    <span class="hero-badge">
+
+                        <i class="bi bi-stars"></i>
+
+                        Sistema de Gestão
+
+                    </span>
+
+
+                    <h1>
+
+                        Gerencie seus cadastros
+                        <span>de forma simples.</span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Organize produtos, clientes e funcionários
+                        em um único sistema, de forma prática,
+                        rápida e eficiente.
+
+                    </p>
+
+
+                    <p class="hero-subtitle">
+
+                        Uma solução desenvolvida com PHP, MVC,
+                        Bootstrap, JavaScript e jQuery.
+
+                    </p>
+
+
+                    <!-- Botão -->
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="index.php?page=login"
+                            class="btn-primary-purple"
+                        >
+
+                            <i class="bi bi-box-arrow-in-right"></i>
+
+                            Acessar o sistema
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Painel visual -->
+
+                <div class="col-lg-6 mt-5 mt-lg-0">
+
+                    <div class="dashboard-card">
+
+
+                        <div class="dashboard-header">
+
+                            <div>
+
+                                <span class="small-label">
+                                    PAINEL
+                                </span>
+
+                                <h3>
+                                    Sistema de Cadastros
+                                </h3>
+
+                            </div>
+
+                            <div class="dashboard-icon">
+
+                                <i class="bi bi-speedometer2"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <p class="dashboard-text">
+
+                            Tenha suas principais informações
+                            organizadas em um só lugar.
 
                         </p>
 
-                        <p class="text-muted">
 
-                            Desenvolvido com PHP, MVC, Bootstrap,
-                            JavaScript, jQuery e validação de dados.
+                        <!-- Categorias -->
 
-                        </p>
+                        <div class="dashboard-options">
 
 
-                        <!-- Botões -->
+                            <!-- Produtos -->
 
-                        <div class="mt-4">
+                            <a
+                                href="index.php?page=produtos"
+                                class="dashboard-option"
+                            >
 
-                            <a href="index.php?page=login"
-                                class="btn btn-primary btn-lg">
+                                <div class="option-icon">
 
-                                <i class="bi bi-box-arrow-in-right me-2"></i>
+                                    <i class="bi bi-box-seam"></i>
 
-                                Acessar o sistema
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Produtos
+                                    </strong>
+
+                                    <small>
+                                        Gerenciar produtos
+                                    </small>
+
+                                </div>
+
+                            </a>
+
+
+                            <!-- Clientes -->
+
+                            <a
+                                href="index.php?page=clientes"
+                                class="dashboard-option"
+                            >
+
+                                <div class="option-icon">
+
+                                    <i class="bi bi-people"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Clientes
+                                    </strong>
+
+                                    <small>
+                                        Gerenciar clientes
+                                    </small>
+
+                                </div>
+
+                            </a>
+
+
+                            <!-- Funcionários -->
+
+                            <a
+                                href="index.php?page=funcionarios"
+                                class="dashboard-option"
+                            >
+
+                                <div class="option-icon">
+
+                                    <i class="bi bi-person-badge"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Funcionários
+                                    </strong>
+
+                                    <small>
+                                        Gerenciar funcionários
+                                    </small>
+
+                                </div>
 
                             </a>
 
@@ -124,234 +302,142 @@
 
                     </div>
 
-
-                    <!-- Card visual -->
-
-                    <div class="col-lg-6 mt-5 mt-lg-0">
-
-                        <div class="card border-0 shadow-lg">
-
-                            <div class="card-body p-5">
-
-                                <div class="text-center mb-4">
-
-                                    <i class="bi bi-speedometer2 display-1 text-primary"></i>
-
-                                    <h3 class="mt-3">
-                                        Sistema de Cadastros
-                                    </h3>
-
-                                    <p class="text-muted">
-
-                                        Organize as principais
-                                        informações em um único lugar.
-
-                                    </p>
-
-                                </div>
-
-
-                                <div class="row text-center">
-
-                                    <!-- Produto -->
-
-                                    <div class="col-4">
-
-                                        <i class="bi bi-box-seam fs-2 text-primary"></i>
-
-                                        <p class="mt-2 mb-0">
-                                            Produtos
-                                        </p>
-
-                                    </div>
-
-
-                                    <!-- Cliente -->
-
-                                    <div class="col-4">
-
-                                        <i class="bi bi-people fs-2 text-primary"></i>
-
-                                        <p class="mt-2 mb-0">
-                                            Clientes
-                                        </p>
-
-                                    </div>
-
-
-                                    <!-- Funcionário -->
-
-                                    <div class="col-4">
-
-                                        <i class="bi bi-person-badge fs-2 text-primary"></i>
-
-                                        <p class="mt-2 mb-0">
-                                            Funcionários
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- =========================================
-             RECURSOS
-        ========================================== -->
 
-        <section class="bg-white py-5">
+    <!-- =====================================
+         RECURSOS
+         ===================================== -->
 
-            <div class="container">
+    <section class="resources">
 
-                <div class="text-center mb-5">
-
-                    <h2>
-                        Recursos do sistema
-                    </h2>
-
-                    <p class="text-muted">
-
-                        Funcionalidades disponíveis
-                        na área administrativa.
-
-                    </p>
-
-                </div>
+        <div class="container">
 
 
-                <div class="row g-4">
+            <div class="section-title">
 
+                <span>
+                    FUNCIONALIDADES
+                </span>
 
-                    <!-- Produtos -->
+                <h2>
+                    Tudo organizado em um só lugar
+                </h2>
 
-                    <div class="col-md-4">
-
-                        <div class="card h-100 border-0 shadow-sm">
-
-                            <div class="card-body text-center p-4">
-
-                                <i class="bi bi-box-seam fs-1 text-primary"></i>
-
-                                <h5 class="mt-3">
-                                    Produtos
-                                </h5>
-
-                                <p class="text-muted">
-
-                                    Cadastre e gerencie
-                                    os produtos do sistema.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Clientes -->
-
-                    <div class="col-md-4">
-
-                        <div class="card h-100 border-0 shadow-sm">
-
-                            <div class="card-body text-center p-4">
-
-                                <i class="bi bi-people fs-1 text-primary"></i>
-
-                                <h5 class="mt-3">
-                                    Clientes
-                                </h5>
-
-                                <p class="text-muted">
-
-                                    Organize os dados dos
-                                    clientes cadastrados.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Funcionários -->
-
-                    <div class="col-md-4">
-
-                        <div class="card h-100 border-0 shadow-sm">
-
-                            <div class="card-body text-center p-4">
-
-                                <i class="bi bi-person-badge fs-1 text-primary"></i>
-
-                                <h5 class="mt-3">
-                                    Funcionários
-                                </h5>
-
-                                <p class="text-muted">
-
-                                    Gerencie os funcionários
-                                    cadastrados no sistema.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <p>
+                    Tenha acesso rápido às principais áreas
+                    do sistema.
+                </p>
 
             </div>
 
-        </section>
+
+            <div class="row g-4">
 
 
-        <!-- =========================================
-             CHAMADA PARA LOGIN
-        ========================================== -->
+                <!-- Produtos -->
 
-        <section class="py-5">
+                <div class="col-md-4">
 
-            <div class="container">
+                    <div class="feature-card">
 
-                <div class="card bg-primary text-white border-0">
+                        <div class="feature-icon">
 
-                    <div class="card-body text-center p-5">
+                            <i class="bi bi-box-seam"></i>
 
-                        <h2>
-                            Pronto para acessar?
-                        </h2>
+                        </div>
 
-                        <p class="mb-4">
+                        <h5>
+                            Produtos
+                        </h5>
 
-                            Entre na área administrativa
-                            para acessar os cadastros.
-
+                        <p>
+                            Cadastre e gerencie os produtos
+                            do sistema de maneira organizada.
                         </p>
 
-                        <a href="index.php?page=login"
-                            class="btn btn-light btn-lg">
+                        <a href="index.php?page=produtos">
 
-                            <i class="bi bi-lock me-2"></i>
+                            Acessar
 
-                            Entrar no sistema
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Clientes -->
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-people"></i>
+
+                        </div>
+
+                        <h5>
+                            Clientes
+                        </h5>
+
+                        <p>
+                            Organize os dados e informações
+                            dos clientes cadastrados.
+                        </p>
+
+                        <a href="index.php?page=clientes">
+
+                            Acessar
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Funcionários -->
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-person-badge"></i>
+
+                        </div>
+
+                        <h5>
+                            Funcionários
+                        </h5>
+
+                        <p>
+                            Gerencie os funcionários
+                            cadastrados no sistema.
+                        </p>
+
+                        <a href="index.php?page=funcionarios">
+
+                            Acessar
+
+                            <i class="bi bi-arrow-right"></i>
 
                         </a>
 
@@ -361,57 +447,110 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-    </main>
 
+    <!-- =====================================
+         CHAMADA PARA LOGIN
+         ===================================== -->
 
-    <!-- =========================================
-         RODAPÉ DA LANDING PAGE
-    ========================================== -->
-
-    <footer class="bg-dark text-white py-4">
+    <section class="access-section">
 
         <div class="container">
 
-            <div class="row align-items-center">
+            <div class="access-card">
 
-                <div class="col-md-6 text-center text-md-start">
+                <div>
 
-                    <strong>
-                        Sistema MVC
-                    </strong>
+                    <span>
+                        ACESSO ADMINISTRATIVO
+                    </span>
 
-                    <p class="text-white-50 mb-0">
+                    <h2>
+                        Pronto para começar?
+                    </h2>
 
-                        Sistema de gerenciamento de cadastros.
-
+                    <p>
+                        Acesse o sistema e gerencie
+                        seus cadastros.
                     </p>
 
                 </div>
 
 
-                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                <a
+                    href="index.php?page=login"
+                    class="btn-access"
+                >
 
-                    <span class="text-white-50">
+                    <i class="bi bi-box-arrow-in-right"></i>
 
-                        Projeto desenvolvido com PHP e Bootstrap
+                    Entrar no sistema
 
-                    </span>
-
-                </div>
+                </a>
 
             </div>
 
         </div>
 
-    </footer>
+    </section>
 
 
-    <!-- Bootstrap JS -->
+</main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- =========================================
+     RODAPÉ
+     ========================================= -->
+
+<footer class="landing-footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <strong>
+                    <i class="bi bi-grid-1x2-fill"></i>
+
+                    Sistema de Cadastros
+                </strong>
+
+                <p>
+                    Sistema de gerenciamento de cadastros.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Desenvolvido com PHP • MVC • Bootstrap
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
 
 </body>
 

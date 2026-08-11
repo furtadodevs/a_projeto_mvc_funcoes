@@ -1,40 +1,54 @@
-<div class="container mt-5">
-<!-- CSS da página -->
-<link rel="stylesheet" href="assets/css/.css">
 
-    <!-- Título -->
-    <div class="mb-5">
-        <h2>Sistema de Cadastros</h2>
+<div class="container home-container">
 
-        <p class="text-muted">
-            Selecione uma das opções abaixo para acessar os cadastros do sistema.
-        </p>
+    <!-- CSS da página -->
+    <link rel="stylesheet" href="assets/css/home.css">
+
+    <!-- Cabeçalho -->
+    <div class="home-header mb-5">
+        <div class="header-icon">
+            <i class="bi bi-grid-1x2-fill"></i>
+        </div>
+
+        <div>
+            <h2>Sistema de Cadastros</h2>
+
+            <p>
+                Selecione uma das opções abaixo para acessar os cadastros do sistema.
+            </p>
+        </div>
     </div>
 
 
     <!-- Cards -->
     <div class="row g-4">
 
+
         <!-- Produtos -->
         <div class="col-md-4">
 
-            <div class="card h-100 shadow-sm">
+            <div class="card cadastro-card h-100">
 
-                <div class="card-body text-center p-4">
+                <div class="card-body text-center">
 
-                    <i class="bi bi-box-seam fs-1 text-primary"></i>
+                    <div class="card-icon">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
 
-                    <h5 class="card-title mt-3">
+                    <h5 class="card-title">
                         Produtos
                     </h5>
 
-                    <p class="card-text text-muted">
+                    <p class="card-text">
                         Cadastre e gerencie os produtos do sistema.
                     </p>
 
                     <a href="index.php?page=produtos"
-                        class="btn btn-primary">
+                       class="btn btn-primary">
+
+                        <i class="bi bi-arrow-right me-1"></i>
                         Acessar produtos
+
                     </a>
 
                 </div>
@@ -47,23 +61,28 @@
         <!-- Clientes -->
         <div class="col-md-4">
 
-            <div class="card h-100 shadow-sm">
+            <div class="card cadastro-card h-100">
 
-                <div class="card-body text-center p-4">
+                <div class="card-body text-center">
 
-                    <i class="bi bi-people fs-1 text-primary"></i>
+                    <div class="card-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
 
-                    <h5 class="card-title mt-3">
+                    <h5 class="card-title">
                         Clientes
                     </h5>
 
-                    <p class="card-text text-muted">
+                    <p class="card-text">
                         Cadastre e gerencie os clientes do sistema.
                     </p>
 
                     <a href="index.php?page=clientes"
-                        class="btn btn-primary">
+                       class="btn btn-primary">
+
+                        <i class="bi bi-arrow-right me-1"></i>
                         Acessar clientes
+
                     </a>
 
                 </div>
@@ -76,23 +95,28 @@
         <!-- Funcionários -->
         <div class="col-md-4">
 
-            <div class="card h-100 shadow-sm">
+            <div class="card cadastro-card h-100">
 
-                <div class="card-body text-center p-4">
+                <div class="card-body text-center">
 
-                    <i class="bi bi-person-badge fs-1 text-primary"></i>
+                    <div class="card-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
 
-                    <h5 class="card-title mt-3">
+                    <h5 class="card-title">
                         Funcionários
                     </h5>
 
-                    <p class="card-text text-muted">
+                    <p class="card-text">
                         Cadastre e gerencie os funcionários do sistema.
                     </p>
 
                     <a href="index.php?page=funcionarios"
-                        class="btn btn-primary">
+                       class="btn btn-primary">
+
+                        <i class="bi bi-arrow-right me-1"></i>
                         Acessar funcionários
+
                     </a>
 
                 </div>

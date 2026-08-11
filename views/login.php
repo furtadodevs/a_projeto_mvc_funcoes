@@ -109,7 +109,7 @@
                             </div>
 
 
-                            <!-- Botão TODO: retornar quando estiver logando--> 
+                            <!-- Botão TODO: retornar quando estiver logando-->
                             <!-- <button
                                 type="submit"
                                 class="btn btn-primary w-100 mt-2">
@@ -120,12 +120,10 @@
 
                             </button> -->
 
-                            <a href="index.php?page=home" class="btn btn-primary w-100">
-
+                            <button type="submit" class="btn btn-primary w-100 mt-2">
                                 <i class="bi bi-box-arrow-in-right me-1"></i>
                                 Entrar
-
-                            </a>
+                            </button>
 
 
                         </form>
