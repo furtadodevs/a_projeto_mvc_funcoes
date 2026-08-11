@@ -1,4 +1,6 @@
 <div class="container mt-5">
+<!-- CSS da página -->
+<link rel="stylesheet" href="assets/css/.css">
 
     <!-- Título -->
     <div class="mb-5">
