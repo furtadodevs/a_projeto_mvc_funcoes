@@ -120,10 +120,10 @@
 
                             </button> -->
 
-                            <button type="submit" class="btn btn-primary w-100 mt-2">
+                            <a href="index.php?page=home" class="btn btn-primary w-100 mt-2">
                                 <i class="bi bi-box-arrow-in-right me-1"></i>
                                 Entrar
-                            </button>
+                            </a>
 
 
                         </form>
