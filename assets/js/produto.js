@@ -1,42 +1,49 @@
-//TODO: PROJETO USANDO JQUERY
+// =========================================
+// PRODUTO - JQUERY
+// =========================================
 
 $(document).ready(function () {
 
-    // Aplica as máscaras nos campos
-    aplicarMascaras();
+    console.log("produto.js carregado!");
 
-    // Configura a validação e o envio
+    aplicarMascaras();
     validarFormulario();
 
 });
 
 
+// =========================================
+// MÁSCARAS
+// =========================================
+
 function aplicarMascaras() {
 
-    // Preço no formato brasileiro
-    // Exemplo: 1.234,56
     $("#preco").mask("000.000.000,00", {
         reverse: true
     });
 
-    // Permite até 6 números
     $("#quantidade").mask("000000");
 
 }
 
+
+// =========================================
+// VALIDAÇÃO
+// =========================================
+
 function validarFormulario() {
 
-    // Seleciona a div responsável pelas mensagens
-    const mensagem = document.getElementById("mensagem");
+    console.log("Validação iniciada!");
 
-    $("#formProduto").on("submit", function (evento) {
-        evento.preventDefault();
-    })
+    const mensagem = $("#mensagem");
 
-    // Configura o jQuery Validation
+
     $("#formProduto").validate({
 
-        // Regras de validação
+        // =====================================
+        // REGRAS
+        // =====================================
+
         rules: {
 
             nome: {
@@ -61,8 +68,13 @@ function validarFormulario() {
 
         },
 
-        // Mensagens em português
+
+        // =====================================
+        // MENSAGENS
+        // =====================================
+
         messages: {
+
             nome: {
                 required: "Informe o nome do produto.",
                 minlength: "O nome deve ter pelo menos 3 caracteres."
@@ -82,22 +94,36 @@ function validarFormulario() {
                 digits: "Digite somente números inteiros.",
                 min: "A quantidade deve ser maior ou igual a 1."
             }
+
         },
 
-        // Não cria novas mensagens de erro
+
+        // =====================================
+        // MENSAGEM DE ERRO
+        // =====================================
+
         errorPlacement: function (error, element) {
 
-            // As mensagens já estão no HTML
-            // dentro das divs invalid-feedback
+            console.log(
+                "Erro no campo:",
+                element.attr("name"),
+                error.text()
+            );
 
-            element
-            .closest(".input-group")
-            .find(".invalid-feedback")
-            .text(error.text());
+            const campo = element.closest(".mb-4");
+
+            campo
+                .find(".invalid-feedback")
+                .text(error.text())
+                .addClass("d-block");
 
         },
 
-        // Executado quando o campo está inválido
+
+        // =====================================
+        // CAMPO INVÁLIDO
+        // =====================================
+
         highlight: function (element) {
 
             $(element)
@@ -106,47 +132,62 @@ function validarFormulario() {
 
         },
 
-        // Executado quando o campo está válido
+
+        // =====================================
+        // CAMPO VÁLIDO
+        // =====================================
+
         unhighlight: function (element) {
+
+            const campo = $(element).closest(".mb-4");
 
             $(element)
                 .removeClass("is-invalid")
                 .addClass("is-valid");
 
+            campo
+                .find(".invalid-feedback")
+                .text("")
+                .removeClass("d-block");
+
         },
 
-        // Executado somente quando todos os campos forem válidos
+
+        // =====================================
+        // FORMULÁRIO VÁLIDO
+        // =====================================
+
         submitHandler: async function (formulario) {
 
-            // Captura os dados do formulário
+            console.log("FORMULÁRIO VÁLIDO!");
+
             const dados = new FormData(formulario);
 
-            /*
-             * Converte o preço:
-             *
-             * Formato exibido: 1.234,56
-             * Formato enviado: 1234.56
-             */
-            const precoConvertido = $("#preco")
+
+            // Converte preço
+            const preco = $("#preco")
                 .val()
                 .replace(/\./g, "")
                 .replace(",", ".");
 
-            // Substitui o preço mascarado pelo preço convertido
-            dados.set("preco", precoConvertido);
+            dados.set("preco", preco);
 
-            // Mostra os dados no console
+
             console.table(
                 Object.fromEntries(dados.entries())
             );
 
-            // Exibe mensagem enquanto envia
-            mensagem.className = "alert alert-info mt-3";
-            mensagem.textContent = "Enviando dados...";
+
+            // Mensagem
+            mensagem
+                .removeClass("d-none alert-danger alert-success")
+                .addClass("alert-info");
+
+            mensagem.text("Enviando dados...");
+
 
             try {
 
-                // Envia os dados para o Controller
                 const resposta = await fetch(
                     "controllers/ProdutoController.php",
                     {
@@ -155,48 +196,72 @@ function validarFormulario() {
                     }
                 );
 
-                // Converte a resposta JSON
+
                 const resultado = await resposta.json();
 
-                console.log(resultado);
+                console.log("Resposta do PHP:", resultado);
 
-                // Verifica se ocorreu erro HTTP
+
+                // =================================
+                // ERRO
+                // =================================
+
                 if (!resposta.ok) {
 
-                    mensagem.className =
-                        "alert alert-danger mt-3";
+                    mensagem
+                        .removeClass("alert-info alert-success")
+                        .addClass("alert-danger");
 
-                    mensagem.textContent =
-                        resultado.mensagem ??
-                        "Erro ao cadastrar produto.";
+                    mensagem.text(
+                        resultado.mensagem ||
+                        "Erro ao cadastrar produto."
+                    );
 
                     return;
                 }
 
-                // Exibe mensagem de sucesso
-                mensagem.className =
-                    "alert alert-success mt-3";
 
-                mensagem.textContent =
-                    resultado.mensagem;
+                // =================================
+                // SUCESSO
+                // =================================
 
-                // Limpa os campos
+                mensagem
+                    .removeClass("alert-info alert-danger")
+                    .addClass("alert-success");
+
+                mensagem.text(
+                    resultado.mensagem
+                );
+
+
                 formulario.reset();
 
-                // Remove as classes da validação
+
                 $(formulario)
                     .find(".form-control")
                     .removeClass("is-valid is-invalid");
 
+
+                $(formulario)
+                    .find(".invalid-feedback")
+                    .text("")
+                    .removeClass("d-block");
+
+
             } catch (erro) {
 
-                mensagem.className =
-                    "alert alert-danger mt-3";
+                console.error(
+                    "Erro no fetch:",
+                    erro
+                );
 
-                mensagem.textContent =
-                    "Erro ao enviar os dados para o controller de produto.";
+                mensagem
+                    .removeClass("alert-info alert-success")
+                    .addClass("alert-danger");
 
-                console.error(erro);
+                mensagem.text(
+                    "Erro ao conectar com o controller."
+                );
 
             }
 
@@ -205,13 +270,26 @@ function validarFormulario() {
     });
 
 
-    // Quando o formulário for limpo
+    // =========================================
+    // RESET
+    // =========================================
+
     $("#formProduto").on("reset", function () {
 
-        // Remove as classes de validação
         $(this)
             .find(".form-control")
             .removeClass("is-valid is-invalid");
+
+        $(this)
+            .find(".invalid-feedback")
+            .text("")
+            .removeClass("d-block");
+
+        mensagem
+            .removeClass("alert-info alert-danger alert-success")
+            .addClass("d-none");
+
+        mensagem.text("");
 
     });
 

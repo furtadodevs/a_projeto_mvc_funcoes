@@ -1,170 +1,411 @@
+// ======================================================
 // PROJETO USANDO JQUERY
+// ======================================================
+
 $(document).ready(function () {
-    // Aplica as máscaras nos campos
+
+    // Aplica as máscaras
     aplicarMascaras();
-  
-    // Configura a validação e o envio
+
+    // Configura a validação
     validarFormulario();
-  });
-  
-  function aplicarMascaras() {
-    // Telefone no formato: (31) 99999/9999
-    $("#telefone").mask("(00) 00000/0000");
-  
-    // CPF no formato: 000.00000.00-0
+
+});
+
+
+// ======================================================
+// MÁSCARAS
+// ======================================================
+
+function aplicarMascaras() {
+
+    // CPF: 000.000.000-00
     $("#cpf").mask("000.000.000-00");
-  
-  }
-  
-  function validarFormulario() {
-    // Seleciona a div responsável pelas mensagens
-    const mensagem = document.getElementById("mensagem");
-  
-    // Impede o formulário de recarregar a página
-    $("#formCliente").on("submit", function (evento) {
-      evento.preventDefault();
-    });
-  
-    // Configura o jQuery Validation
+
+    // Telefone: (00) 00000-0000
+    $("#telefone").mask("(00) 00000-0000");
+
+}
+
+
+// ======================================================
+// VALIDAÇÃO DO FORMULÁRIO
+// ======================================================
+
+function validarFormulario() {
+
+    // Verifica se o formulário existe
+    if ($("#formCliente").length === 0) {
+
+        console.error("ERRO: #formCliente não foi encontrado.");
+        return;
+
+    }
+
+
+    // Verifica se o jQuery Validation foi carregado
+    if (typeof $.fn.validate !== "function") {
+
+        console.error(
+            "ERRO: o plugin jQuery Validation não foi carregado."
+        );
+
+        return;
+
+    }
+
+
+    // ==================================================
+    // CONFIGURAÇÃO DO JQUERY VALIDATION
+    // ==================================================
+
     $("#formCliente").validate({
-      // Regras de validação
-      rules: {
-        nome: {
-          required: true,
-          minlength: 3,
-          maxlength: 100,
+
+        // ==================================================
+        // REGRAS
+        // ==================================================
+
+        rules: {
+
+            nome: {
+                required: true,
+                minlength: 3,
+                maxlength: 100
+            },
+
+            cpf: {
+                required: true,
+                minlength: 14,
+                maxlength: 14
+            },
+
+            email: {
+                required: true,
+                email: true
+            },
+
+            telefone: {
+                required: true,
+                minlength: 15,
+                maxlength: 15
+            }
+
         },
-  
-        cpf: {
-          required: true,
-          minlength: 14,
-          maxlength: 14,
+
+
+        // ==================================================
+        // MENSAGENS
+        // ==================================================
+
+        messages: {
+
+            nome: {
+                required: "Informe o nome do cliente.",
+                minlength: "O nome deve ter pelo menos 3 caracteres.",
+                maxlength: "O nome deve ter no máximo 100 caracteres."
+            },
+
+            cpf: {
+                required: "Informe o CPF do cliente.",
+                minlength: "Informe o CPF completo.",
+                maxlength: "Informe um CPF válido."
+            },
+
+            email: {
+                required: "Informe o e-mail do cliente.",
+                email: "Verifique o formato do e-mail. Ex: cliente@email.com"
+            },
+
+            telefone: {
+                required: "Informe o telefone do cliente.",
+                minlength: "Informe o telefone completo.",
+                maxlength: "Informe um telefone válido."
+            }
+
         },
-  
-        email: {
-          required: true,
-          email: true,
+
+
+        // ==================================================
+        // ONDE MOSTRAR A MENSAGEM
+        // ==================================================
+
+        errorPlacement: function (error, element) {
+
+            const campo = $(element);
+
+            const grupo = campo.closest(".mb-4");
+
+            const mensagemErro = grupo.find(".invalid-feedback");
+
+            mensagemErro
+                .text(error.text())
+                .css("display", "block");
+
         },
-  
-        telefone: {
-          required: true,
-          minlength: 15,
-          maxlength: 15,
+
+
+        // ==================================================
+        // CAMPO INVÁLIDO
+        // ==================================================
+
+        highlight: function (element) {
+
+            const campo = $(element);
+
+            const grupo = campo.closest(".mb-4");
+
+            campo
+                .removeClass("is-valid")
+                .addClass("is-invalid");
+
+            grupo
+                .find(".invalid-feedback")
+                .css("display", "block");
+
+            grupo
+                .find(".valid-feedback")
+                .css("display", "none");
+
         },
-      },
-  
-      // Mensagens em português
-      messages: {
-        nome: {
-          required: "Informe o nome do cliente.",
-          minlength: "O nome deve ter pelo menos 3 caracteres.",
-          maxlength: "O nome deve ter no máximo 100 caracteres.",
+
+
+        // ==================================================
+        // CAMPO VÁLIDO
+        // ==================================================
+
+        unhighlight: function (element) {
+
+            const campo = $(element);
+
+            const grupo = campo.closest(".mb-4");
+
+            campo
+                .removeClass("is-invalid")
+                .addClass("is-valid");
+
+            grupo
+                .find(".invalid-feedback")
+                .text("")
+                .css("display", "none");
+
+            grupo
+                .find(".valid-feedback")
+                .text("")
+                .css("display", "none");
+
         },
-  
-        cpf: {
-          required: "Informe o CPF do cliente.",
-          minlength: "O CPF deve ter 14 caracteres.",
-          maxlength: "O CPF deve ter 14 caracteres.",
-        },
-  
-        email: {
-          required: "Informe o e-mail do cliente.",
-          email: "Verifique o formato do e-mail. Ex: cliente@email.com"
-        },
-  
-        telefone: {
-          required: "Informe o telefone do cliente.",
-          minlength: "O telefone deve ter 15 caracteres.",
-          maxlength: "O telefone deve ter 15 caracteres.",
-        },
-      },
-  
-      // Mensagens de erro
-      errorPlacement: function (error, element) {
-        element
-          .closest(".input-group")
-          .find(".invalid-feedback")
-          .text(error.text());
-      },
-  
-      // Executado quando o campo está inválido
-      highlight: function (element) {
-        $(element).removeClass("is-valid").addClass("is-invalid");
-      },
-  
-      // Executado quando o campo está válido
-      unhighlight: function (element) {
-        $(element).removeClass("is-invalid").addClass("is-valid");
-      },
-  
-      // Executado somente quando todos os campos forem válidos
-      submitHandler: async function (formulario) {
-        // Captura os dados do formulário
-        const dados = new FormData(formulario);
-  
-        // Remove a máscara do CPF
-        const cpf = $("#cpf").val().replace(/\D/g, "");
-  
-        // Remove a máscara do telefone
-        const telefone = $("#telefone").val().replace(/\D/g, "");
-  
-        // Atualiza os valores no FormData
-        dados.set("cpf", cpf);
-        dados.set("telefone", telefone);
-  
-        // Mostra os dados no console
-        // console.table(
-        //     Object.fromEntries(dados.entries())
-        // );
-  
-        // Exibe mensagem enquanto envia
-        mensagem.className = "alert alert-info mt-3";
-        mensagem.textContent = "Enviando dados...";
-  
-        try {
-          // Envia os dados para o Controller
-          const resposta = await fetch("controllers/ClienteController.php", {
-            method: "POST",
-            body: dados,
-          });
-  
-          // Converte a resposta JSON
-          const resultado = await resposta.json();
-  
-          // console.log(resultado);
-  
-          // Verifica se ocorreu erro HTTP
-          if (!resposta.ok) {
-            mensagem.className = "alert alert-danger mt-3";
-  
+
+
+        // ==================================================
+        // FORMULÁRIO VÁLIDO
+        // ==================================================
+
+        submitHandler: async function (formulario) {
+
+            console.log(
+                "FORMULÁRIO VALIDADO COM SUCESSO!"
+            );
+
+
+            // Pega a div de mensagem
+            const mensagem =
+                document.getElementById("mensagem");
+
+
+            // Captura os dados
+            const dados =
+                new FormData(formulario);
+
+
+            // ==================================================
+            // REMOVE MÁSCARA DO CPF
+            // ==================================================
+
+            const cpf =
+                $("#cpf")
+                    .val()
+                    .replace(/\D/g, "");
+
+
+            // ==================================================
+            // REMOVE MÁSCARA DO TELEFONE
+            // ==================================================
+
+            const telefone =
+                $("#telefone")
+                    .val()
+                    .replace(/\D/g, "");
+
+
+            // Atualiza os valores
+            dados.set("cpf", cpf);
+            dados.set("telefone", telefone);
+
+
+            // Mostra os dados no console
+            console.table(
+                Object.fromEntries(dados.entries())
+            );
+
+
+            // ==================================================
+            // MENSAGEM DE ENVIO
+            // ==================================================
+
+            mensagem.className =
+                "alert alert-info mt-3";
+
+            mensagem.classList.remove("d-none");
+
             mensagem.textContent =
-              resultado.mensagem ?? "Erro ao cadastrar cliente.";
-  
-            return;
-          }
-  
-          // Exibe mensagem de sucesso
-          mensagem.className = "alert alert-success mt-3";
-          mensagem.textContent = resultado.mensagem;
-  
-          // Limpa os campos
-          formulario.reset();
-  
-          // Remove as classes da validação
-          $(formulario).find(".form-control").removeClass("is-valid is-invalid");
-        } catch (erro) {
-          mensagem.className = "alert alert-danger mt-3";
-          mensagem.textContent =
-            "Erro ao enviar os dados para o controller de cliente.";
-  
-          console.error(erro);
+                "Enviando dados...";
+
+
+            try {
+
+                // ==================================================
+                // ENVIA PARA O CONTROLLER
+                // ==================================================
+
+                const resposta = await fetch(
+                    "controllers/ClienteController.php",
+                    {
+                        method: "POST",
+                        body: dados
+                    }
+                );
+
+
+                // ==================================================
+                // LÊ A RESPOSTA
+                // ==================================================
+
+                const resultado =
+                    await resposta.json();
+
+
+                console.log(
+                    "Resposta do servidor:",
+                    resultado
+                );
+
+
+                // ==================================================
+                // ERRO HTTP
+                // ==================================================
+
+                if (!resposta.ok) {
+
+                    mensagem.className =
+                        "alert alert-danger mt-3";
+
+                    mensagem.classList.remove("d-none");
+
+                    mensagem.textContent =
+                        resultado.mensagem ??
+                        "Erro ao cadastrar cliente.";
+
+                    return;
+
+                }
+
+
+                // ==================================================
+                // SUCESSO
+                // ==================================================
+
+                mensagem.className =
+                    "alert alert-success mt-3";
+
+                mensagem.classList.remove("d-none");
+
+                mensagem.textContent =
+                    resultado.mensagem ??
+                    "Cliente cadastrado com sucesso!";
+
+
+                // ==================================================
+                // LIMPA FORMULÁRIO
+                // ==================================================
+
+                formulario.reset();
+
+
+                $(formulario)
+                    .find(".form-control")
+                    .removeClass(
+                        "is-valid is-invalid"
+                    );
+
+
+                $(formulario)
+                    .find(".invalid-feedback")
+                    .text("")
+                    .css("display", "none");
+
+            }
+
+
+            // ==================================================
+            // ERRO NO FETCH
+            // ==================================================
+
+            catch (erro) {
+
+                console.error(
+                    "Erro completo:",
+                    erro
+                );
+
+
+                mensagem.className =
+                    "alert alert-danger mt-3";
+
+                mensagem.classList.remove("d-none");
+
+                mensagem.textContent =
+                    "Erro ao enviar os dados para o controller de cliente.";
+
+            }
+
         }
-      },
+
     });
-  
-    // Quando o formulário for limpo
-    $("#formCliente").on("reset", function () {
-      // Remove as classes de validação
-      $(this).find(".form-control").removeClass("is-valid is-invalid");
-    });
-  }
+
+}
+
+
+// ======================================================
+// RESET DO FORMULÁRIO
+// ======================================================
+
+$("#formCliente").on("reset", function () {
+
+    const formulario = $(this);
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+
+    // Remove classes
+    formulario
+        .find(".form-control")
+        .removeClass(
+            "is-valid is-invalid"
+        );
+
+
+    // Limpa mensagens
+    formulario
+        .find(".invalid-feedback")
+        .text("")
+        .css("display", "none");
+
+
+    // Limpa mensagem geral
+    mensagem.className =
+        "alert d-none mt-3";
+
+    mensagem.textContent = "";
+
+});
